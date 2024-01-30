@@ -3,7 +3,7 @@
 @section('content')
     <section class="section">
         <div class="section-header">
-            <h3 class="page__heading">Crear Blog</h3>
+            <h3 class="page__heading">Despachar</h3>
         </div>
         <div class="section-body">
             <div class="row">
@@ -23,21 +23,38 @@
                             </div>
                         @endif
 
-                    <form action="{{ route('blogs.store') }}" method="POST">
+                    <form action="{{ route('profesores.store') }}" method="POST">
                         @csrf
                         <div class="row">
                             <div class="col-xs-12 col-sm-12 col-md-12">
+                                                    
+                            <div class="col-xs-12 col-sm-12 col-md-12">
                                 <div class="form-group">
-                                   <label for="titulo">Título</label>
-                                   <input type="text" name="titulo" class="form-control">
+                                   <label for="titulo">Nombre</label>
+                                   <input type="text" name="nombre" class="form-control">
                                 </div>
                             </div>
+
                             <div class="col-xs-12 col-sm-12 col-md-12">
-                                                    
-                                <div class="form-floating">
-                                <textarea class="form-control" name="contenido" style="height: 100px"></textarea>
-                                <label for="contenido">Contenido</label>
+                                <div class="form-group">
+                                   <label for="titulo">Apellido</label>
+                                   <input type="text" name="apellido" class="form-control">
                                 </div>
+                            </div>
+
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                <div class="form-group">
+                                   <label for="titulo">Materia (Materia que dicta)</label>
+                                   <input type="text" name="materia" class="form-control">
+                                </div>
+                            </div>
+
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                <div class="form-group">
+                                   <label for="titulo">Despacho (Si-No)</label>
+                                   <input type="text" name="estado" class="form-control">
+                                </div>
+                            </div>
                             
                             <button type="submit" class="btn btn-primary">Guardar</button>                            
                         </div>

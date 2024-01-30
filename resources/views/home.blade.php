@@ -40,7 +40,7 @@
                                         </div>
                                     </div>                                                                
                                     
-                                    <div class="col-md-4 col-xl-4">
+                                    <!-- <div class="col-md-4 col-xl-4">
                                         <div class="card bg-c-pink order-card">
                                             <div class="card-block">
                                                 <h5>Blogs</h5>                                               
@@ -52,7 +52,36 @@
                                                 <p class="m-b-0 text-right"><a href="/blogs" class="text-white">Ver más</a></p>
                                             </div>
                                         </div>
+                                    </div> -->
+
+                                    <div class="col-md-4 col-xl-4">
+                                        <div class="card bg-c-blue order-card">
+                                            <div class="card-block">
+                                                <h5>Estudiantes</h5>                                               
+                                                @php
+                                                 use App\Models\Estudiante;
+                                                $cant_estudiantes = Estudiante::count();                                                
+                                                @endphp
+                                                <h2 class="text-right"><i class="fa fa-user f-left"></i><span>{{$cant_estudiantes}}</span></h2>
+                                                <p class="m-b-0 text-right"><a href="/estudiantes" class="text-white">Ver más</a></p>
+                                            </div>
+                                        </div>
                                     </div>
+
+                                    <div class="col-md-4 col-xl-4">
+                                        <div class="card bg-c-pink order-card">
+                                            <div class="card-block">
+                                                <h5>Profesores</h5>                                               
+                                                @php
+                                                 use App\Models\Profesores;
+                                                $cant_Profesores = Profesores::count();                                                
+                                                @endphp
+                                                <h2 class="text-right"><i class="fas fa-address-card f-left"></i><span>{{$cant_Profesores}}</span></h2>
+                                                <p class="m-b-0 text-right"><a href="/profesores" class="text-white">Ver más</a></p>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                 </div>                        
                         </div>
                     </div>
@@ -62,3 +91,4 @@
     </section>
 @endsection
 
+<i class="fa-solid fa-chalkboard-user"></i>

@@ -6,6 +6,10 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RolController;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\EstudianteController;
+use App\Http\Controllers\ProfesoresController;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,6 +20,7 @@ use App\Http\Controllers\BlogController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -33,4 +38,6 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('roles', RolController::class);
     Route::resource('usuarios', UsuarioController::class);
     Route::resource('blogs', BlogController::class);
+    Route::resource('estudiantes', EstudianteController::class);
+    Route::resource('profesores', ProfesoresController::class);
 });

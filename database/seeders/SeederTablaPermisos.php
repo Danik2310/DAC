@@ -29,7 +29,7 @@ class SeederTablaPermisos extends Seeder
             'editar-blog',
             'borrar-blog',
 
-             //Operacions sobre tabla blogs
+             //Operacions sobre tabla usuario
             'ver-usuario',
             'crear-usuario',
             'editar-usuario',
