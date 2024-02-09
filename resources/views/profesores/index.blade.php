@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('css')
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css">
+@endsection('css')
+
 @section('content')
     <section class="section">
         <div class="section-header">
@@ -13,10 +17,11 @@
                 
             
                         @can('crear-profesores')
-                        <a class="btn btn-warning" href="{{ route('profesores.create') }}">Despacho</a>
+                        <a class="btn btn-warning mb-3" href="{{ route('profesores.create') }}">Despachar</a>
                         @endcan
+                        <a class="btn btn-danger mb-3" href="{{ route('profesores.pdf') }}">PDF</a>
             
-                        <table class="table table-striped mt-2">
+                        <table id="profesores" class="table table-striped mt-2">
                                 <thead style="background-color:#6777ef">                                     
                                     <th style="display: none;">ID</th>
                                     <th style="color:#fff;">Nombre</th>
@@ -52,17 +57,28 @@
                             @endforeach
                             </tbody>
                         </table>
-
-                        <!-- Ubicamos la paginacion a la derecha -->
-                        <div class="pagination justify-content-end">
-                            {!! $profesores->links() !!}
-                        </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+    @section('js')
+<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+<script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
+<script src="https://cdn.datatables.net/plug-ins/1.13.7/i18n/es-ES.json"></script>
+
+<script>
+    $('#profesores').DataTable( {
+    language: {
+        url: '//cdn.datatables.net/plug-ins/1.13.7/i18n/es-ES.json'
+    }
+
+} );
+</script>
+</script>
+@endsection('js')
 @endsection
 
 

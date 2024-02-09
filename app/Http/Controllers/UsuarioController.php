@@ -11,6 +11,7 @@ use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Arr;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class UsuarioController extends Controller
 {
@@ -29,14 +30,22 @@ class UsuarioController extends Controller
     public function index(Request $request)
     {      
         //Sin paginación
-        /* $usuarios = User::all();
-        return view('usuarios.index',compact('usuarios')); */
+        $usuarios = User::all();
+        return view('usuarios.index',compact('usuarios')); 
 
         //Con paginación
-        $usuarios = User::paginate(5);
-        return view('usuarios.index',compact('usuarios'));
+        // $usuarios = User::paginate(5);
+        // return view('usuarios.index',compact('usuarios'));
 
         //al usar esta paginacion, recordar poner en el el index.blade.php este codigo  {!! $usuarios->links() !!}
+    }
+
+    public function pdf()
+    {
+        $usuarios = User::all();
+        $pdf = Pdf::loadView('usuarios.pdf', compact('usuarios'));
+        return $pdf->stream();
+
     }
 
     /**

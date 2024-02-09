@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('css')
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css">
+@endsection('css')
+
 @section('content')
 <section class="section">
   <div class="section-header">
@@ -10,9 +14,10 @@
               <div class="col-lg-12">
                   <div class="card">
                       <div class="card-body">                           
-                          <a class="btn btn-warning" href="{{ route('usuarios.create') }}">Nuevo</a>        
+                          <a class="btn btn-warning mb-3" href="{{ route('usuarios.create') }}">Nuevo</a>
+                          <a class="btn btn-danger mb-3" href="{{ route('usuarios.pdf') }}">PDF</a>        
                          
-                            <table class="table table-striped mt-2">
+                            <table id="usuarios" class="table table-striped mt-2">
                               <thead style="background-color:#6777ef">                                     
                                   <th style="display: none;">ID</th>
                                   <th style="color:#fff;">Nombre</th>
@@ -45,15 +50,27 @@
                                 @endforeach
                               </tbody>
                             </table>
-                            <!-- Centramos la paginacion a la derecha -->
-                          <div class="pagination justify-content-end">
-                            {!! $usuarios->links() !!}
-                          </div>     
-                            
                       </div>
                   </div>
               </div>
           </div>
       </div>
     </section>
+    @section('js')
+
+<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+<script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
+<script src="https://cdn.datatables.net/plug-ins/1.13.7/i18n/es-ES.json"></script>
+
+<script>
+    $('#usuarios').DataTable( {
+    language: {
+        url: '//cdn.datatables.net/plug-ins/1.13.7/i18n/es-ES.json'
+    }
+
+} );
+</script>
+</script>
+@endsection('js')
 @endsection

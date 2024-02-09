@@ -21,7 +21,9 @@
     @yield('page_css')
 
 
-    @yield('css')
+@yield('css')
+
+
 </head>
 <body>
 
@@ -47,6 +49,8 @@
 
 @include('profile.change_password')
 @include('profile.edit_profile')
+
+@yield('js')
 
 </body>
 <script src="{{ asset('assets/js/jquery.min.js') }}"></script>

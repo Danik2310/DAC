@@ -25,6 +25,13 @@ use App\Http\Controllers\ProfesoresController;
 Route::get('/', function () {
     return view('welcome');
 });
+// Rutas de PDF
+
+Route::get('estudiantes/pdf', [EstudianteController::class, 'pdf'])->name('estudiantes.pdf');
+Route::get('profesores/pdf', [ProfesoresController::class, 'pdf'])->name('profesores.pdf');
+Route::get('usuarios/pdf', [UsuarioController::class, 'pdf'])->name('usuarios.pdf');
+Route::get('roles/pdf', [RolController::class, 'pdf'])->name('roles.pdf');
+
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 

@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use Illuminate\Support\Facades\DB;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 
 class RolController extends Controller
@@ -27,9 +28,16 @@ class RolController extends Controller
     public function index(Request $request)
     {        
          //Con paginación
-         $roles = Role::paginate(5);
+         $roles = Role::all();
          return view('roles.index',compact('roles'));
          //al usar esta paginacion, recordar poner en el el index.blade.php este codigo  {!! $roles->links() !!} 
+    }
+    public function pdf()
+    {
+        $roles = Role::all();
+        $pdf = Pdf::loadView('roles.pdf', compact('roles'));
+        return $pdf->stream();
+
     }
 
     /**

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 use App\Models\Estudiante;
 
@@ -10,12 +11,26 @@ use App\Models\Estudiante;
 class EstudianteController extends Controller
 {
     public function index()
-    {       
-         //Con paginación
-         $estudiantes = Estudiante::paginate(5);
-         return view('estudiantes.index',compact('estudiantes'));
+    {   
+        //Sin paginacion        
+        $estudiantes = Estudiante::all();
+        return view('estudiantes.index',compact('estudiantes'));
+        
+        //Con paginación
+        /* $estudiantes = Estudiante::paginate(5);
+         return view('estudiantes.index',compact('estudiantes'));*/
+         
          //al usar esta paginacion, recordar poner en el el index.blade.php este codigo  {!! $blogs->links() !!}    
     }
+
+    public function pdf()
+    {
+        $estudiantes = Estudiante::all();
+        $pdf = Pdf::loadView('estudiantes.pdf', compact('estudiantes'));
+        return $pdf->stream();
+
+    }
+
     public function create()
     {
         return view('estudiantes.crear');
